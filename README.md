@@ -1,83 +1,85 @@
-# LimbX
+# Core Systems
 
-### Closing the loop between movement and touch.
-
-LimbX is an ongoing project exploring tactile sensing and sensory feedback for prosthetic and wearable robotic systems.
-
-The current prototype combines a sensorized glove, a real-time software interface, and a wearable vibrotactile band. The glove detects where contact occurs and how much force or pressure is applied, the software maps and visualizes the interaction on a digital hand, and the haptic band communicates the detected sensation back to the user through different vibration patterns.
-
-Alongside the sensory system, LimbX is being developed around a lightweight, tendon-driven and highly modular CAD architecture with flexible attachment and adjustment interfaces for different users and applications.
-
----
-
-## Overview
-
-Robotic and prosthetic hands can perform movements and interact with objects, but users often lack direct sensory information about where contact occurs and how much force is being applied.
-
-LimbX explores a closed-loop approach to this problem by:
-
-1. Detecting physical contact and force
-2. Mapping the interaction to a digital representation of the hand
-3. Visualizing the location, area, pressure and force in real time
-4. Converting the detected sensation into haptic feedback
-5. Communicating the sensation back to the user through a wearable vibrotactile band
-
-The current glove-based prototype provides a way to develop and validate this sensory architecture before integrating the sensing system directly into a robotic or prosthetic hand.
-
----
-
-# Current Prototype
-
-The current system consists of three primary components:
+LimbX is built around four interconnected systems:
 
 ## 1. Sensorized Glove
 
-The glove acts as the current tactile sensing platform.
+The current prototype uses a glove containing multiple pressure and force sensors distributed across different regions of the hand.
 
-It contains multiple pressure and force sensors distributed across different regions of the hand. When an object, surface or another force interacts with the glove, the sensors detect the resulting changes.
-
-The system captures information including:
+When a surface or object touches the glove, the sensing layer captures:
 
 - Contact location
-- Hand and finger region
-- Applied force
-- Applied pressure
-- Contact intensity
-- Contact area or region
-- Changes in interaction over time
-
-For example, if the upper region of the thumb is touched, the corresponding region of the digital hand is identified and represented in the software.
-
-The glove is used as a prototype implementation of the sensing architecture. In the intended robotic/prosthetic implementation, these sensors would be integrated into the corresponding regions of the artificial hand.
-
----
-
-# 2. Real-Time Touch Simulation
-
-Sensor data from the glove is transmitted to a local software interface.
-
-The software creates a real-time digital representation of the hand and maps the physical interaction detected by the glove onto the corresponding region of the digital hand.
-
-The interface represents:
-
-- Where the hand is being touched
-- Which finger or region is involved
-- The approximate location of contact
-- The area or region of contact
+- Hand/finger region
+- Contact area
 - Applied force
 - Applied pressure
 - Relative interaction intensity
-- Changes in the detected interaction
+- Changes in force and pressure over time
 
-For example:
+The glove currently acts as the prototype sensing platform. In the intended robotic/prosthetic implementation, the sensing elements will be integrated directly into the corresponding regions of the artificial hand.
 
-```text
-Physical Interaction
-        ↓
-Thumb Sensor Activated
-        ↓
-Sensor Location Identified
-        ↓
-Digital Thumb Region Mapped
-        ↓
-Force / Pressure Displayed
+---
+
+## 2. Real-Time Software Simulation
+
+The sensor data is processed and represented through a local real-time software interface.
+
+The digital hand reproduces the physical interaction detected by the glove, including:
+
+- Contact location
+- Contact region
+- Contact area
+- Force
+- Pressure
+- Interaction intensity
+
+For example, touching the upper region of the physical thumb results in the corresponding region of the digital hand being represented in the software along with the measured interaction.
+
+The software provides the visualization and processing layer for developing and validating the tactile system.
+
+---
+
+## 3. Vibrotactile Feedback Band
+
+A separate wearable band communicates the detected sensation back to the user through vibration.
+
+The band uses multiple vibration actuators and different vibration patterns to represent different tactile conditions.
+
+The feedback can encode:
+
+**Location → Where the interaction occurred**
+
+**Intensity → How strong the interaction is**
+
+**Pattern → What type of sensation is being communicated**
+
+This creates a learnable connection between the physical interaction detected by the sensing system and the sensation perceived by the user.
+
+---
+
+## 4. Modular CAD & Mechanical Architecture
+
+LimbX is designed around a lightweight, tendon-driven and highly modular mechanical architecture.
+
+The CAD system is designed to be adaptable rather than being restricted to a single fixed limb configuration.
+
+### Mechanical Features
+
+- Lightweight structural design
+- Tendon-driven actuation
+- Modular CAD architecture
+- Flexible attachment interfaces
+- Adjustable mounting geometry
+- Adaptable limb configuration
+- Customizable mechanical dimensions
+- Replaceable/modular components
+- Flexible actuator placement
+- Reduced distal weight
+- Designed for integration with different sensing configurations
+- Designed to accommodate different residual-limb and attachment requirements
+
+The modular design allows the same underlying platform to be adapted for different users and applications, including above-elbow and below-elbow amputees, below-elbow configurations, people with limited or impaired limb function, paralysis-related applications, disability and assistive applications, and potential wearable robotic augmentation.
+
+The same architecture can also be explored as a wearable robotic extension or **"third arm"** for able-bodied users.
+
+The CAD and mechanical architecture therefore forms the physical platform on which the sensing, software and haptic systems can eventually be integrated.
