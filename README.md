@@ -4,100 +4,80 @@
 
 LimbX is an ongoing project exploring tactile sensing and sensory feedback for prosthetic and wearable robotic systems.
 
-The current prototype combines a sensorized glove, a real-time software interface, and a wearable vibrotactile band. The glove captures where contact occurs and how much force or pressure is applied, the software represents this interaction on a digital hand model, and the haptic band communicates the detected sensation back to the user through vibration patterns.
+The current prototype combines a sensorized glove, a real-time software interface, and a wearable vibrotactile band. The glove detects where contact occurs and how much force or pressure is applied, the software maps and visualizes the interaction on a digital hand, and the haptic band communicates the detected sensation back to the user through different vibration patterns.
+
+Alongside the sensory system, LimbX is being developed around a lightweight, tendon-driven and highly modular CAD architecture with flexible attachment and adjustment interfaces for different users and applications.
 
 ---
 
 ## Overview
 
-A robotic or prosthetic hand can physically interact with objects, but the user does not naturally receive the same tactile information as they would from a biological hand.
+Robotic and prosthetic hands can perform movements and interact with objects, but users often lack direct sensory information about where contact occurs and how much force is being applied.
 
-LimbX explores a closed-loop sensory system that can detect physical interaction, represent it digitally, and communicate the information back to the user through haptic feedback.
+LimbX explores a closed-loop approach to this problem by:
 
-The current prototype uses a glove as the sensing platform. The same sensing and feedback architecture is intended to be integrated directly into a prosthetic or robotic hand in future iterations.
+1. Detecting physical contact and force
+2. Mapping the interaction to a digital representation of the hand
+3. Visualizing the location, area, pressure and force in real time
+4. Converting the detected sensation into haptic feedback
+5. Communicating the sensation back to the user through a wearable vibrotactile band
+
+The current glove-based prototype provides a way to develop and validate this sensory architecture before integrating the sensing system directly into a robotic or prosthetic hand.
 
 ---
 
-## Current Prototype
+# Current Prototype
 
-The current system consists of three main parts:
+The current system consists of three primary components:
 
-### 1. Sensorized Glove
+## 1. Sensorized Glove
 
-The glove contains multiple pressure and force sensors distributed across different regions of the hand.
+The glove acts as the current tactile sensing platform.
 
-When an object or surface comes into contact with the glove, the sensors detect the interaction.
+It contains multiple pressure and force sensors distributed across different regions of the hand. When an object, surface or another force interacts with the glove, the sensors detect the resulting changes.
 
-The system captures information such as:
+The system captures information including:
 
-- Location of contact
-- Hand/finger region involved
+- Contact location
+- Hand and finger region
 - Applied force
 - Applied pressure
-- Relative contact intensity
-- Spatial distribution of the interaction
+- Contact intensity
+- Contact area or region
+- Changes in interaction over time
 
-The glove acts as a prototype sensing platform for the tactile system.
+For example, if the upper region of the thumb is touched, the corresponding region of the digital hand is identified and represented in the software.
 
-In the intended prosthetic implementation, these sensors would be integrated into the corresponding regions of the prosthetic hand rather than the glove.
-
----
-
-### 2. Real-Time Touch Simulation
-
-Sensor data from the glove is sent to a local software interface that represents the physical interaction on a digital hand model.
-
-The software provides a real-time visualization of:
-
-- Which part of the hand is being touched
-- The approximate contact location
-- The region or area where contact is occurring
-- Force applied to the contacted region
-- Pressure applied to the contacted region
-- Changes in interaction intensity
-
-For example, when the upper region of the thumb is touched on the physical glove, the corresponding region of the digital hand is highlighted or represented in the software along with the measured force and pressure.
-
-This creates a digital representation of the tactile interaction occurring on the physical hand.
+The glove is used as a prototype implementation of the sensing architecture. In the intended robotic/prosthetic implementation, these sensors would be integrated into the corresponding regions of the artificial hand.
 
 ---
 
-### 3. Vibrotactile Feedback Band
+# 2. Real-Time Touch Simulation
 
-A separate wearable band provides tactile feedback to the user through vibration.
+Sensor data from the glove is transmitted to a local software interface.
 
-The vibration response changes according to the information detected by the glove.
+The software creates a real-time digital representation of the hand and maps the physical interaction detected by the glove onto the corresponding region of the digital hand.
 
-Different sensations and interaction conditions can be represented using different vibration patterns.
+The interface represents:
 
-The feedback can encode information such as:
+- Where the hand is being touched
+- Which finger or region is involved
+- The approximate location of contact
+- The area or region of contact
+- Applied force
+- Applied pressure
+- Relative interaction intensity
+- Changes in the detected interaction
 
-- Where the contact occurred
-- The intensity of the interaction
-- Changes in applied force or pressure
-- Different detected touch conditions
-
-The goal is to allow the user to learn the relationship between the vibration patterns and the corresponding physical sensations.
-
----
-
-## System Flow
+For example:
 
 ```text
-          PHYSICAL CONTACT
-                 ↓
-          SENSORIZED GLOVE
-                 ↓
-       Force / Pressure Data
-                 ↓
-          DATA PROCESSING
-                 ↓
-       REAL-TIME SOFTWARE
-                 ↓
-       DIGITAL HAND MODEL
-                 ↓
-        HAPTIC INTERPRETATION
-                 ↓
-       VIBROTACTILE BAND
-                 ↓
-               USER
+Physical Interaction
+        ↓
+Thumb Sensor Activated
+        ↓
+Sensor Location Identified
+        ↓
+Digital Thumb Region Mapped
+        ↓
+Force / Pressure Displayed
